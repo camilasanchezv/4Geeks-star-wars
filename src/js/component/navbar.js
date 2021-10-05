@@ -19,52 +19,30 @@ export const Navbar = () => {
 				</Link>
 				<div className="dropdown">
 					<button
-						className="btn btn-secondary dropdown-toggle"
+						className="btn btn-primary dropdown-toggle d-flex align-items-center"
 						type="button"
 						id="dropdownMenuButton1"
 						data-bs-toggle="dropdown"
 						aria-expanded="false">
-						Dropdown button
-					</button>
-					<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-						<li>
-							<a className="dropdown-item" href="#">
-								Action
-							</a>
-						</li>
-						<li>
-							<a className="dropdown-item" href="#">
-								Another action
-							</a>
-						</li>
-						<li>
-							<a className="dropdown-item" href="#">
-								Something else here
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div className="dropdown">
-					<button
-						className="btn btn-primary dropdown-toggle d-flex align-items-center"
-						type="button"
-						id="dropdown"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
 						Favourites
 						<div className="bg-secondary mx-2 px-1 rounded">{store.favourites.length}</div>
 					</button>
-					<ul className="dropdown-menu" aria-labelledby="dropdown">
+					<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 						{store.favourites.length != 0 ? (
 							store.favourites.map((name, index) => (
-								<li key={name + index}>
+								<li
+									key={name + index}
+									className="d-flex justify-content-between align-items-center mx-2">
 									{name}
-									<i className="fas fa-trash" onClick={() => actions.removeFavourite(name)} />
+									<i
+										className="fas fa-trash"
+										style={{ cursor: "pointer" }}
+										onClick={() => actions.removeFavourite(name)}
+									/>
 								</li>
 							))
 						) : (
-							<li>(empty)</li>
+							<li className="mx-2">(empty)</li>
 						)}
 					</ul>
 				</div>
